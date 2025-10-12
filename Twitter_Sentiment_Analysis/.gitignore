@@ -1,38 +1,7 @@
-# -----------------------------
-# Python environment
-# -----------------------------
+.env
+env/
 venv/
+*.snv
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 
-# -----------------------------
-# Environment variables
-# -----------------------------
-.env
-
-# -----------------------------
-# Jupyter Notebook checkpoints (if used)
-# -----------------------------
-.ipynb_checkpoints/
-
-# -----------------------------
-# IDE / Editor files
-# -----------------------------
-*.sublime-project
-*.sublime-workspace
-*.vscode/
-*.idea/
-*.snv
-
-# -----------------------------
-# OS generated files
-# -----------------------------
-.DS_Store
-Thumbs.db
-
-# -----------------------------
-# Logs
-# -----------------------------
-*.log
