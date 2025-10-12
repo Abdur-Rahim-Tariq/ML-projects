@@ -36,8 +36,15 @@ def get_sentiment(text):
 
 def fetch_tweets(keyword, limit=100):
     try:
+        limit = max(10, min(limit, 100))  # enforce 10–100 range
         query = f"{keyword} -is:retweet lang:en"
-        tweets = client.search_recent_tweets(query=query, max_results=min(limit, 100))
+        tweets = client.search_recent_tweets(query=query, max_results=limit)
+
+
+
+
+        
+        
         if not tweets.data:
             return pd.DataFrame(columns=["Tweet"])
         texts = [tweet.text for tweet in tweets.data]
