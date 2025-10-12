@@ -1,7 +1,0 @@
-.env
-env/
-venv/
-*.snv
-__pycache__/
-*.pyc
-
