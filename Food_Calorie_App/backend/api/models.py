@@ -18,3 +18,11 @@ class CalorieRecord(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.food_item}"
+
+
+class FoodItem(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    calories_per_100g = models.FloatField()
+
+    def __str__(self):
+        return self.name

@@ -6,16 +6,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from ultralytics import YOLO
 from .models import CalorieRecord, FoodItem
-from datetime import date
+from datetime import date, timedelta
 import os
 
 model = YOLO("./best.pt") 
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
     username = request.data.get("username")
     password = request.data.get("password")
-    email = request.data.get("email")  # make sure you get email
+    email = request.data.get("email")
 
     if not username or not password or not email:
         return Response({"error": "Username, email, and password are required."}, status=400)
@@ -36,6 +37,7 @@ def login(request):
     if user is None:
         return Response({"error": "Invalid credentials"}, status=400)
     return Response({"message": "Login successful", "username": user.username})
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -60,42 +62,88 @@ def upload_image(request):
     os.remove(temp_path)
     return Response({"detected_items": list(set(detected_items))})
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def save_record(request):
     user = request.user
-    data = request.data
+    data = request.data  # Expecting: {"items": [{"food_item": "Pizza", "servings": 2, "weight_in_grams": 150}]}
+
+    saved_items = []
+
     for item in data.get("items", []):
-        CalorieRecord.objects.create(
+        food_name = item.get("food_item")
+        servings = float(item.get("servings", 1))
+        weight_in_grams = float(item.get("weight_in_grams", 100))
+
+        # Lookup food item from database
+        try:
+            food = FoodItem.objects.get(name__iexact=food_name)
+        except FoodItem.DoesNotExist:
+            return Response({"error": f"Food item '{food_name}' not found in database"}, status=400)
+
+        # Calculate total calories
+        total_calories = (food.calories_per_100g * weight_in_grams / 100) * servings
+
+        # Save record
+        record = CalorieRecord.objects.create(
             user=user,
-            food_item=item["food_item"],
-            servings=item["servings"],
-            weight_in_grams=item["weight_in_grams"],
-            total_calories=item["total_calories"]
+            food_item=food.name,
+            servings=servings,
+            weight_in_grams=weight_in_grams,
+            total_calories=total_calories
         )
-    return Response({"message": "Record saved successfully"})
+
+        saved_items.append({
+            "food_item": food.name,
+            "servings": servings,
+            "weight_in_grams": weight_in_grams,
+            "total_calories": total_calories
+        })
+
+    return Response({
+        "message": "Calorie records saved successfully!",
+        "saved_items": saved_items
+    })
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_records(request):
+    tab = request.query_params.get("tab", "daily")  # daily / weekly / monthly
+    today = date.today()
+
+    if tab == "daily":
+        start_date = today
+    elif tab == "weekly":
+        start_date = today - timedelta(days=today.weekday())  # start of week
+    elif tab == "monthly":
+        start_date = today.replace(day=1)
+    else:
+        start_date = None
+
     records = CalorieRecord.objects.filter(user=request.user)
+    if start_date:
+        records = records.filter(date__gte=start_date)
+
     data = [
         {
             "id": r.id,
             "food_item": r.food_item,
             "servings": r.servings,
-            "weight": r.weight_in_grams,
-            "calories": r.total_calories,
+            "weight_in_grams": r.weight_in_grams,
+            "total_calories": r.total_calories,
             "date": r.date
         } for r in records
     ]
     return Response(data)
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_record(request, record_id):
     CalorieRecord.objects.filter(id=record_id, user=request.user).delete()
     return Response({"message": "Record deleted"})
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -106,6 +154,7 @@ def calorie_summary(request):
     return Response({"daily": daily, "monthly": monthly})
 
 
-
 def home(request):
     return HttpResponse("<h1>Welcome to Food Calorie App Backend 🚀</h1>")
+
+

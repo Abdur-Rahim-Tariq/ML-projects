@@ -6,6 +6,7 @@ urlpatterns = [
     path("register/", views.register),
     path("login/", views.login),
     path("upload/", views.upload_image),
+    path('save_record/', views.save_record),
     path("save/", views.save_record),
     path("records/", views.get_records),
     path("delete/<int:record_id>/", views.delete_record),
