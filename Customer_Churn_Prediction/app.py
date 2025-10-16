@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 
 # Load model pipeline
-MODEL_PATH = "churn_model_pipeline.pkl"
+MODEL_PATH = "./model/churn_model_pipeline.pkl"
 
 @st.cache_resource
 def load_model():
