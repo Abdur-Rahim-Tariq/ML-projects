@@ -40,7 +40,6 @@ It includes **Exploratory Data Analysis (EDA)**, **Model Training**, and an **in
 
 ## 🧩 Workflow
 
-```text
 1️⃣ Data Collection → Load and explore customer dataset  
 2️⃣ EDA → Identify churn patterns, correlations, and customer segments  
 3️⃣ Preprocessing → Encode, scale, and clean data  
