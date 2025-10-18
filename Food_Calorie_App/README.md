@@ -68,15 +68,17 @@ React Dashboard Displays Past Calories Intake
 
 ## 🖼️ Screenshots
 
+
+
+
 ### 🔹 Dashboard Page
-![Dashboard Screenshot](/images/dashboard_1.png)
+![Dashboard Screenshot](images/dashboard_1.png)
 
 ### 🔹 Food Detection Example
-![Detection Result](images/dashbaord_inputs.png)
+![Detection Result](images/dashboard_inputs.png)
 
 ### 🔹 Calorie History View
 ![Calorie History](images/dashboard_records.png)
-
 ---
 
 ## 👨‍💻 Author
