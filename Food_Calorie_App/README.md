@@ -42,16 +42,6 @@ All data is securely stored in the backend (**PostgreSQL**) and visualized beaut
 
 ---
 
-## 🧩 System Architecture
-
-```text
-User Uploads Image → YOLOv8 Model Detects Food →
-User Inputs Servings & Weight →
-Django Calculates Calories →
-Data Stored in PostgreSQL →
-React Dashboard Displays Past Calories Intake
-
-
 ## 🖥️ Dashboard Preview
 
 | Feature | Description |
@@ -94,7 +84,6 @@ React Dashboard Displays Past Calories Intake
 ## 👨‍💻 Author
 
 **Abdur Rahim Tariq**  
-🎓 *BS Data Science | KFUEIT*  
 
 📧 **Email:** [abdurrahimtariq.ds@gmail.com](mailto:abdurrahimtariq.ds@gmail.com)  
 💻 **GitHub:** [Abdur-Rahim-Tariq](https://github.com/Abdur-Rahim-Tariq)
