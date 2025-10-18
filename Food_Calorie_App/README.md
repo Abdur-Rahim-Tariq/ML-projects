@@ -53,23 +53,22 @@ All data is securely stored in the backend (**PostgreSQL**) and visualized beaut
 | 📅 **Tabs** | Switch between Daily, Weekly, and Monthly data views |
 
 ---
-
 ## 🖼️ Screenshots
 
 ### 🔹 Login Page
-![Login Page](images/signin_page.png)
+<img src="images/signin_page.png" alt="Login Page" width="500"/>
 
 ### 🔹 Signup Page
-![Signup Page](images/signup_page.png)
+<img src="images/signup_page.png" alt="Signup Page" width="500"/>
 
 ### 🔹 Dashboard Page
-![Dashboard Screenshot](images/dashboard_1.png)
+<img src="images/dashboard_1.png" alt="Dashboard Screenshot" width="500"/>
 
 ### 🔹 Food Detection Example
-![Detection Result](images/dashboard_records.png)
+<img src="images/dashbaord_inputs.png" alt="Detection Result" width="500"/>
 
 ### 🔹 Calorie History View
-![Calorie History](images/dashboard_records.png)
+<img src="images/dashboard_records.png" alt="Calorie History" width="500"/>
 
 ---
 
