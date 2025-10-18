@@ -9,7 +9,7 @@ Users can track and visualize their **daily**, **weekly**, and **monthly** calor
 
 This app combines **AI-powered image recognition** with **personalized calorie tracking**.  
 By uploading a meal photo, the system automatically detects the food items and calculates calories based on serving size and weight input by the user.  
-All data is securely stored in the backend (PostgreSQL) and visualized beautifully in the React dashboard.
+All data is securely stored in the backend (**PostgreSQL**) and visualized beautifully in the React dashboard.
 
 ---
 
@@ -51,8 +51,6 @@ Django Calculates Calories →
 Data Stored in PostgreSQL →
 React Dashboard Displays Past Calories Intake
 
---- 
-
 
 ## 🖥️ Dashboard Preview
 
@@ -68,8 +66,11 @@ React Dashboard Displays Past Calories Intake
 
 ## 🖼️ Screenshots
 
+### 🔹 Login Page
+![Login Page](images/signin_page.png)
 
-
+### 🔹 Signup Page
+![Signup Page](images/signup_page.png)
 
 ### 🔹 Dashboard Page
 ![Dashboard Screenshot](images/dashboard_1.png)
@@ -79,13 +80,21 @@ React Dashboard Displays Past Calories Intake
 
 ### 🔹 Calorie History View
 ![Calorie History](images/dashboard_records.png)
+
+---
+
+## 🧰 Future Improvements
+
+- 🍽️ **Portion size estimation** using image segmentation  
+- 🧬 **Integration with health APIs** for personalized recommendations  
+- ☁️ **Cloud model deployment** (AWS, Render, or Hugging Face Spaces)
+
 ---
 
 ## 👨‍💻 Author
 
 **Abdur Rahim Tariq**  
-🎓 BS Data Science | KFUEIT  
+🎓 *BS Data Science | KFUEIT*  
 
 📧 **Email:** [abdurrahimtariq.ds@gmail.com](mailto:abdurrahimtariq.ds@gmail.com)  
-💻 **GitHub:** [Abdur-Rahim-Tariq](https://github.com/Abdur-Rahim-Tariq)  
-
+💻 **GitHub:** [Abdur-Rahim-Tariq](https://github.com/Abdur-Rahim-Tariq)

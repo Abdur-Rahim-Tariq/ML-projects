@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// Replace this with your actual API base URL
+
 const API_BASE = "http://localhost:8000/api";
 
 export default function Signup({ setPage }) {
@@ -9,7 +9,7 @@ export default function Signup({ setPage }) {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
 
-  // Paste inside your Signup.jsx component
+ 
 async function handleSignup(e) {
   e.preventDefault();
   setMsg("");
