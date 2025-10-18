@@ -66,7 +66,7 @@ All data is securely stored in the backend (**PostgreSQL**) and visualized beaut
 ![Dashboard Screenshot](images/dashboard_1.png)
 
 ### 🔹 Food Detection Example
-![Detection Result](images/dashboard_inputs.png)
+![Detection Result](images/dashboard_records.png)
 
 ### 🔹 Calorie History View
 ![Calorie History](images/dashboard_records.png)
