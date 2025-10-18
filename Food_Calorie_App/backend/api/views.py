@@ -67,8 +67,7 @@ def upload_image(request):
 @permission_classes([IsAuthenticated])
 def save_record(request):
     user = request.user
-    data = request.data  # Expecting: {"items": [{"food_item": "Pizza", "servings": 2, "weight_in_grams": 150}]}
-
+    data = request.data  
     saved_items = []
 
     for item in data.get("items", []):
@@ -76,16 +75,16 @@ def save_record(request):
         servings = float(item.get("servings", 1))
         weight_in_grams = float(item.get("weight_in_grams", 100))
 
-        # Lookup food item from database
+        
         try:
             food = FoodItem.objects.get(name__iexact=food_name)
         except FoodItem.DoesNotExist:
             return Response({"error": f"Food item '{food_name}' not found in database"}, status=400)
 
-        # Calculate total calories
+        
         total_calories = (food.calories_per_100g * weight_in_grams / 100) * servings
 
-        # Save record
+       
         record = CalorieRecord.objects.create(
             user=user,
             food_item=food.name,

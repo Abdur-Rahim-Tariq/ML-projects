@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// Replace this with your actual API base URL
+
 const API_BASE = "http://localhost:8000/api";
 
 export default function Login({ setUser, setPage }) {
@@ -8,7 +8,7 @@ export default function Login({ setUser, setPage }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
- // Paste inside your Login.jsx component
+ 
 async function handleLogin(e) {
   e.preventDefault();
   setError("");
@@ -23,10 +23,10 @@ async function handleLogin(e) {
     const data = await res.json();
 
     if (res.ok) {
-      // Save access token in localStorage
+      
       localStorage.setItem("token", data.access);
-      setUser(true);        // update your state to logged in
-      setPage("dashboard"); // navigate to dashboard
+      setUser(true);        
+      setPage("dashboard"); 
     } else {
       setError(data.detail || "Invalid credentials");
     }
