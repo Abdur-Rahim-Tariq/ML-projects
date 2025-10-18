@@ -3,9 +3,7 @@ import pandas as pd
 import joblib
 from pathlib import Path
 
-# -----------------------------------
-# Load Model
-# -----------------------------------
+
 MODEL_PATH = Path(__file__).resolve().parent / "churn_model_pipeline.pkl"
 
 @st.cache_resource
@@ -19,21 +17,16 @@ def load_model():
 
 model = load_model()
 
-# -----------------------------------
-# Streamlit UI
-# -----------------------------------
+
 st.set_page_config(page_title="Customer Churn Prediction", layout="centered")
 st.title("📊 Telco Customer Churn Prediction")
 st.write("Predict whether a telecom customer is likely to churn based on their details.")
 
-# ---------------------------
-# Input Form
-# ---------------------------
+
 st.header("🔧 Enter Customer Details")
 
 col1, col2 = st.columns(2)
 
-# Binary features
 yes_no_cols = [
     'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
     'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
@@ -51,7 +44,6 @@ with col2:
     for col in yes_no_cols[6:]:
         yes_no_inputs[col] = st.selectbox(col, ["Yes", "No"])
 
-# Other categorical inputs
 with col1:
     internet_service = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"])
     contract = st.selectbox("Contract Type", ["Month-to-month", "One year", "Two year"])
@@ -63,7 +55,6 @@ with col2:
         ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"]
     )
 
-# Numeric inputs
 with col1:
     tenure = st.number_input("Tenure (months)", min_value=0, max_value=100, value=12)
     monthly_charges = st.number_input("Monthly Charges ($)", min_value=0.0, max_value=200.0, value=70.0)
@@ -71,12 +62,9 @@ with col1:
 with col2:
     total_charges = st.number_input("Total Charges ($)", min_value=0.0, max_value=10000.0, value=1000.0)
 
-# ---------------------------
-# Prepare DataFrame
-# ---------------------------
 if st.button("🔍 Predict Churn"):
     try:
-        # Convert "Yes"/"No" → 1/0
+    
         binary_mapped = {k: 1 if v == "Yes" else 0 for k, v in yes_no_inputs.items()}
 
         input_data = pd.DataFrame({
@@ -101,7 +89,7 @@ if st.button("🔍 Predict Churn"):
             'TotalCharges': [total_charges]
         })
 
-        # ✅ Model expects numeric "Yes"/"No" — safe conversion done above
+        
         prediction = model.predict(input_data)
         pred_proba = model.predict_proba(input_data)[0][1]
 
