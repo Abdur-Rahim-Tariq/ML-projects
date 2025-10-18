@@ -47,4 +47,10 @@ It includes **Exploratory Data Analysis (EDA)**, **Model Training**, and an **in
 5️⃣ Evaluation → Compute performance metrics (F1, ROC-AUC, etc.)  
 6️⃣ Deployment → Build interactive Streamlit app for live predictions
 
+---
 
+## 📬 Contact
+
+👤 **Abdur Rahim Tariq**  
+📧 [abdurrahimtariq.ds@gmail.com](mailto:abdurrahimtariq.ds@gmail.com)  
+💻 [GitHub: Abdur-Rahim-Tariq](https://github.com/Abdur-Rahim-Tariq)  
