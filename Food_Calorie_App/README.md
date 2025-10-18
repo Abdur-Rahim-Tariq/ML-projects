@@ -36,7 +36,6 @@ All data is securely stored in the backend (**PostgreSQL**) and visualized beaut
 | **Backend** | Django REST Framework |
 | **AI Model** | YOLOv8 (Ultralytics) |
 | **Database** | PostgreSQL |
-| **Visualization** | Chart.js / Recharts |
 | **Auth** | JWT Authentication |
 | **Languages** | Python, JavaScript |
 
